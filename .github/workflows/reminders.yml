@@ -21,7 +21,7 @@ jobs:
             --site scverse.zulipchat.com
             --stream repo-management
             --subject "Core dev activity summary"
-            --message "Dear @*core-devs*,\n\nplease provide some bullet points what you have been up to the last two weeks."
+            --message "Dear @*core-devs*, please provide some bullet points what you have been up to the last two weeks."
             --verbose
 
 # TODO: this action has been pulled from github for a ToS violation
