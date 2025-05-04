@@ -21,14 +21,15 @@ jobs:
             --site scverse.zulipchat.com
             --stream repo-management
             --subject "Core dev activity summary"
-            --message "test test"
+            --message "Dear @*core-devs*,\n\nplease provide some bullet points what you have been up to the last two weeks."
             --verbose
 
-  keepalive-job:
-    name: Keepalive Workflow
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: gautamkrishnar/keepalive-workflow@v2
+# TODO: this action has been pulled from github for a ToS violation
+#   keepalive-job:
+#     name: Keepalive Workflow
+#     runs-on: ubuntu-latest
+#     permissions:
+#       actions: write
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: gautamkrishnar/keepalive-workflow@v2
