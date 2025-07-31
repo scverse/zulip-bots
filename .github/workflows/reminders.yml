@@ -24,12 +24,15 @@ jobs:
             --message "Dear @*core-devs*, please provide some bullet points what you have been up to the last two weeks."
             --verbose
 
-# TODO: this action has been pulled from github for a ToS violation
-#   keepalive-job:
-#     name: Keepalive Workflow
-#     runs-on: ubuntu-latest
-#     permissions:
-#       actions: write
-#     steps:
-#       - uses: actions/checkout@v4
-#       - uses: gautamkrishnar/keepalive-workflow@v2
+  keepalive-job:
+    name: Keepalive Workflow
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Re-enable workflow
+        env:
+          GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN || github.token }}
+        shell: sh
+        run: |
+          gh api --verbose -X PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/integration-test.yml/enable"
