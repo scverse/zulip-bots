@@ -1,9 +1,9 @@
-name: Reminder bot 
+name: Reminder bot
 
 on:
-    schedule:
-        - cron: "0 9 1,15 * *" # Run on the 1st and 15th of every month at 9am UTC
-    workflow_dispatch:  # Allows manual triggering of the workflow
+  schedule:
+    - cron: "0 9 1,15 * *" # Run on the 1st and 15th of every month at 9am UTC
+  workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
   standup-reminder:
@@ -15,14 +15,14 @@ jobs:
         uses: astral-sh/setup-uv@v5
       - name: Send message
         run: >
-            uvx --from zulip zulip-send 
-            --api-key "${{ secrets.REMINDER_BOT_API_KEY }}" 
-            --user "${{ secrets.REMINDER_BOT_EMAIL }}"
-            --site scverse.zulipchat.com
-            --stream repo-management
-            --subject "Core dev activity summary"
-            --message "Dear @*core-devs*, please provide some bullet points what you have been up to the last two weeks."
-            --verbose
+          uvx --from zulip zulip-send 
+          --api-key "${{ secrets.REMINDER_BOT_API_KEY }}" 
+          --user "${{ secrets.REMINDER_BOT_EMAIL }}"
+          --site scverse.zulipchat.com
+          --stream repo-management
+          --subject "Core dev activity summary"
+          --message "Dear @*core-devs*, please provide some bullet points what you have been up to the last two weeks."
+          --verbose
 
   keepalive-job:
     name: Keepalive Workflow
